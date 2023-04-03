@@ -4,7 +4,7 @@ const routes = require('./routes'); // add routes from routes.js for method and 
 const init = async () => {
   const server = Hapi.server({
     port: 5000,
-    host: 'localhost',
+    host: process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0',
     routes: { // membuat CORS agar server dapat digunakan ketika meminta data dari origin yg berbeda
       cors: {
         origin: ['*'], // * seluruh data origin yg berbeda/masukan host origin
